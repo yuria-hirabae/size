@@ -4,54 +4,59 @@
   <meta charset="UTF-8">
   <style>
     body{
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
+          width: 100%;
+          height: 100%;
+          text-align: center;
+        }
 
-div#select{
-  margin: 10px auto 40px;
-  text-align: center;
-}
+        div#select{
+          margin: 30px auto 40px;
+          text-align: center;
+        }
 
-label {
-  color: black;
-  font-weight: bold;
-  background-color: lightpink;
-  padding: 10px 80px;
-  border-radius: 12px;
-  border: 2px solid pink;
-  box-shadow: 1px 1px lightgrey;
-}
+        label {
+          color: black;
+          font-weight: bold;
+          background-color: lightpink;
+          padding: 10px 50px;
+          border-radius: 12px;
+          border: 2px solid pink;
+          box-shadow: 1px 1px lightgrey;
+        }
 
-img#img{
-  text-align: center;
-  width: 700px;
-}
+        #file {
+          position: absolute;
+          opacity: 0;
+          width: 10px;
+        }
 
-#download{
-  margin: 20px auto;
-  width: 200px;
-  height: 50px;
-  font-size: 15px;
-  font-weight: bold;
-  background-color: lightgreen;
-  border: 2px solid lightgreen;
-  border-radius: 5px;
-  box-shadow: 3px 3px lightslategray;
-}
+        img#img{
+          text-align: center;
+        }
 
-#download:active {
-  box-shadow: 2px 2px #7a0000;
-  transform: translateY(3px);
-}
+        #download{
+          margin: 20px auto;
+          text-decoration: none;
+          padding: 10px;
+          font-size: 20px;
+          font-weight: bold;
+          background-color: lightgreen;
+          border: 2px solid lightgreen;
+          border-radius: 5px;
+          box-shadow: 3px 3px lightslategray;
+        }
+
+        #download:active {
+          box-shadow: 2px 2px #7a0000;
+          transform: translateY(3px);
+        }
   </style>
   <script type="text/javascript">
   const fileup = (e) => {
     const img = document.getElementById('img');
     const reader = new FileReader();
     const imgReader = new Image();
-    const imgWidth = 800;
+    const imgWidth = 700;
     reader.onloadend = () => {
       imgReader.onload = () => {
         const imgType = imgReader.src.substring(5, imgReader.src.indexOf(';'));
@@ -79,18 +84,15 @@ img#img{
   </script>
 </head>
 <body>
-  <p><input type="file" accept="image/jpeg,image/png,image/gif" onchange="fileup(this)" />  
-    <!-- <div id="select"> -->
-      <!-- <label for="file">
+    <div id="select">
+      <label class="fileUploadBtn" tabindex="0">
         +写真
-        <input type="file" style="display:none;" accept="image/jpeg,image/png,image/gif" onchange="fileup(this)" />  
+        <input type="file" name="file" id="file" accept="image/jpeg,image/png,image/gif" onchange="fileup(this)" />  
       </label>
-    </div> -->
-  </p>
+    </div>
+    <p><a id="download" href="#" download="dl.png">ダウンロード</a></p>
   <div>
     <img src="" id="img" />
   </div>
-  <p>
-    <a id="download" href="#" download="dl.png">ダウンロード</a></p>
 </body>
 </html>
